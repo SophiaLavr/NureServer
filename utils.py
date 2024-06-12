@@ -1,4 +1,3 @@
-# utils.py
 import json
 import os
 
@@ -18,7 +17,6 @@ def generate_key():
 def load_key():
     return open(KEY_FILE, 'rb').read()
 
-# Generate key if it doesn't exist
 if not os.path.exists(KEY_FILE):
     generate_key()
 
@@ -35,7 +33,7 @@ def decrypt_data(encrypted_data):
         decrypted_data = cipher_suite.decrypt(encrypted_data)
         return json.loads(decrypted_data.decode())
     except (cryptography.fernet.InvalidToken, TypeError) as e:
-        print(f"Error decrypting data: {e}")
+        print(f"Помилка дешифрування даних: {e}")
         return None
 
 def load_history():
