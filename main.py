@@ -4,7 +4,7 @@ from server import Server
 import routes
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
-server = Server('0.0.0.0', 5555)
+server = Server('0.0.0.0', 5555, max_workers=10, max_clients=5)
 
 routes.init_app(app, server)
 
